@@ -91,8 +91,8 @@
                 },
                 {
                     "name": "",
-                    "id": "c5326b95-c387-4c6e-90a7-801e573d7932",
-                    "path": "<Mouse>/leftButton",
+                    "id": "fc8cea4e-f42c-4c59-89b4-11b99163929d",
+                    "path": "<DualShockGamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -102,8 +102,8 @@
                 },
                 {
                     "name": "",
-                    "id": "fc8cea4e-f42c-4c59-89b4-11b99163929d",
-                    "path": "<DualShockGamepad>/buttonWest",
+                    "id": "5082c9ad-3d16-46bf-924a-c6c4eb5659f4",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
