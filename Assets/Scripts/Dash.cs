@@ -16,6 +16,8 @@ public class Dash : MonoBehaviour
     private bool isDashing = false;
     private float dashStartTime;
     public GameObject particle;
+    public GameObject slash;
+
 
     private void Awake()
     {
@@ -46,11 +48,13 @@ public class Dash : MonoBehaviour
             }
             else
             {
-                isDashing = false;
+                slash.SetActive(true);
                 particle.SetActive(false);
+                isDashing = false;
                 Invoke(nameof(ResetDash), dashCooldown);
             }
         }
+
     }
 
     private void StartDash()
@@ -68,5 +72,6 @@ public class Dash : MonoBehaviour
     private void ResetDash()
     {
         canDash = true;
+        slash.SetActive(false);
     }
 }

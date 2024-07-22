@@ -1,6 +1,4 @@
-using FischlWorks_FogWar;
 using UnityEngine;
-using static FischlWorks_FogWar.csFogWar;
 
 public class LightController : MonoBehaviour
 {
@@ -8,7 +6,8 @@ public class LightController : MonoBehaviour
     public float decreaseRate = 0.1f; // Taxa de diminuição do raio da luz
     public float minLightRange = 1f; // Raio mínimo da luz
     public float maxLightRange = 10f; // Raio máximo da luz
-    public csFogWar fogOfWarController; // A referência ao controlador do Fog of War
+
+    private float previousLightRange;
 
     void Start()
     {
@@ -17,10 +16,7 @@ public class LightController : MonoBehaviour
             playerLight = GetComponent<Light>();
         }
 
-        if (fogOfWarController == null)
-        {
-            fogOfWarController = FindObjectOfType<csFogWar>();
-        }
+        previousLightRange = playerLight.range;
     }
 
     void Update()
@@ -29,21 +25,23 @@ public class LightController : MonoBehaviour
         if (playerLight.range > minLightRange)
         {
             // Diminui o raio da luz com base na taxa de diminuição e no tempo
-            playerLight.range -= decreaseRate * Time.deltaTime;
-            UpdateSightRange();
+            float newLightRange = playerLight.range - decreaseRate * Time.deltaTime;
+            playerLight.range = Mathf.Max(newLightRange, minLightRange);
+
+            if (Mathf.Abs(playerLight.range - previousLightRange) > 0.01f) // Atualiza apenas se a diferença for significativa
+            {
+                previousLightRange = playerLight.range;
+            }
         }
     }
+
     public void IncreaseVision(float amount)
     {
-        playerLight.range = Mathf.Min(playerLight.range + amount, maxLightRange);
-        UpdateSightRange();
-    }
-
-    private void UpdateSightRange()
-    {
-        if (fogOfWarController != null)
+        float newLightRange = Mathf.Min(playerLight.range + amount, maxLightRange);
+        if (Mathf.Abs(newLightRange - playerLight.range) > 0.01f) // Atualiza apenas se a diferença for significativa
         {
-            fogOfWarController.SetSightRange(0, Mathf.RoundToInt(playerLight.range / 1));
+            playerLight.range = newLightRange;
+            previousLightRange = playerLight.range;
         }
     }
 }

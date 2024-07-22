@@ -84,7 +84,7 @@ PrefabInstance:
       addedObject: {fileID: 6218770258138389842}
     - targetCorrespondingSourceObject: {fileID: 1849736199912346, guid: e332982425ee2ec48b168979bb7b43f5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8018662602069700650}
+      addedObject: {fileID: 6152168802001314378}
   m_SourcePrefab: {fileID: 100100000, guid: e332982425ee2ec48b168979bb7b43f5, type: 3}
 --- !u!1 &2156182930301376256 stripped
 GameObject:
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  followDistance: 10
+  followDistance: 50
 --- !u!195 &6218770258138389842
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -127,8 +127,8 @@ NavMeshAgent:
   m_BaseOffset: -0.49
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &-8018662602069700650
-MeshCollider:
+--- !u!136 &6152168802001314378
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -145,7 +145,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 477c3a0d92aa1424db2ac70c581d1745, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.8646826
+  m_Height: 2.0323248
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.0174243, z: 0.026983708}
