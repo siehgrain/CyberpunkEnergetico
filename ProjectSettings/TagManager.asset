@@ -5,11 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - EnergyItem
+<<<<<<< Updated upstream
+=======
+  - Enemy
+  - CinemachineTarget
+  - FxTemporaire
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
