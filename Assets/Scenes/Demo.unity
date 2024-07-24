@@ -6256,6 +6256,27 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &624257725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3691415582076124559, guid: 049d86508fd200446bd9b1a327337b1c, type: 3}
+  m_PrefabInstance: {fileID: 1017145552396278332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &624257727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624257725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dcf5c1cb09c9e47897c66a119dad3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 7448378572760983716, guid: bcbeb671ee3111d449d561884e60e6d9, type: 3}
+  spawnInterval: 1
+  spawnPoints:
+  - {fileID: 322153919}
 --- !u!1 &634616749
 GameObject:
   m_ObjectHideFlags: 0
@@ -35495,10 +35516,14 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 67614143}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4798907708701250335, guid: 049d86508fd200446bd9b1a327337b1c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3691415582076124559, guid: 049d86508fd200446bd9b1a327337b1c, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 624257727}
   m_SourcePrefab: {fileID: 100100000, guid: 049d86508fd200446bd9b1a327337b1c, type: 3}
 --- !u!114 &2126900351424724760
 MonoBehaviour:
