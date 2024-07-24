@@ -18,11 +18,15 @@ public class Dash : MonoBehaviour
     public GameObject particle;
     public GameObject slash;
 
+    // Adicione uma referência ao Animator
+    private Animator animator;
+    private static readonly int DashTrigger = Animator.StringToHash("Dash");
 
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
         characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();  // Obtenha o componente Animator
 
         playerInputActions.Player.Dash.performed += ctx => StartDash();
     }
@@ -54,7 +58,6 @@ public class Dash : MonoBehaviour
                 Invoke(nameof(ResetDash), dashCooldown);
             }
         }
-
     }
 
     private void StartDash()
@@ -66,6 +69,12 @@ public class Dash : MonoBehaviour
             dashStartTime = Time.time;
             isDashing = true;
             canDash = false;
+
+            // Acione o trigger de animação
+            if (animator != null)
+            {
+                animator.SetTrigger(DashTrigger);
+            }
         }
     }
 

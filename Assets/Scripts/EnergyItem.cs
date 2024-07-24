@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnergyItem : MonoBehaviour
 {
-    public float visionIncreaseAmount = 2f; // Quantidade de aumento da visão
+    public float visionIncreaseAmount = 10f; // Quantidade de aumento da visão
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,7 +12,7 @@ public class EnergyItem : MonoBehaviour
             LightController lightController = other.GetComponent<LightController>();
             if (lightController != null)
             {
-                lightController.IncreaseVision(visionIncreaseAmount);
+                lightController.IncreaseFieldOfView(visionIncreaseAmount);
             }
             // Destroi o item de energia após ser coletado
             Destroy(gameObject);

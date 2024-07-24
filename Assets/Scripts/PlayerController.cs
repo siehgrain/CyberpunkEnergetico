@@ -3,12 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public Light fieldOfViewLight; // Luz que representa o campo de visão do jogador
-    public float decreaseAmount = 1f; // Quanto diminuir o campo de visão
-    public float minFieldOfView = 5f; // Valor mínimo do campo de visão
+    public LightController lightController; // Referência ao LightController
 
     private PlayerInputActions playerInputActions;
     private Vector2 mouseScreenPosition;
+    public float DanoRecebido;
 
     private void Awake()
     {
@@ -25,22 +24,27 @@ public class PlayerController : MonoBehaviour
     {
         playerInputActions.Disable();
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Perdeu Vida");
-            DecreaseFieldOfView();
-            
+            DecreaseFieldOfView(DanoRecebido);
         }
     }
 
-    private void DecreaseFieldOfView()
+    private void DecreaseFieldOfView(float amount)
     {
-        if (fieldOfViewLight != null)
+        if (lightController != null)
         {
-            fieldOfViewLight.range = Mathf.Max(fieldOfViewLight.range - decreaseAmount, minFieldOfView);
+            lightController.DecreaseFieldOfView(amount);
+        }
+    }
+
+    private void IncreaseFieldOfView(float amount)
+    {
+        if (lightController != null)
+        {
+            lightController.IncreaseFieldOfView(amount); // Valor para aumentar
         }
     }
 }
