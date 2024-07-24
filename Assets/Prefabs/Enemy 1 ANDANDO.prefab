@@ -516,6 +516,9 @@ PrefabInstance:
       addedObject: {fileID: 5528537867392137755}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34910d7e94406c84e9e552177b210294, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2955671622902303816}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34910d7e94406c84e9e552177b210294, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 5143945421991643034}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34910d7e94406c84e9e552177b210294, type: 3}
       insertIndex: -1
@@ -561,6 +564,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   followDistance: 50
+--- !u!114 &2955671622902303816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448378572760983716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6453e1e7711ccc942a4dd62d7840ab8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!195 &5143945421991643034
 NavMeshAgent:
   m_ObjectHideFlags: 0
