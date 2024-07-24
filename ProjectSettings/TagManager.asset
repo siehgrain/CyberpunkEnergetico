@@ -6,6 +6,9 @@ TagManager:
   tags:
   - EnergyItem
   - Enemy
+  - CinemachineTarget
+  - FxTemporaire
+  - armaImpacto
   layers:
   - Default
   - TransparentFX
