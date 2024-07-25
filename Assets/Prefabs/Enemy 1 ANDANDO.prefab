@@ -300,6 +300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 1 ANDANDO
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34910d7e94406c84e9e552177b210294, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1360657110594216822, guid: 34910d7e94406c84e9e552177b210294, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -523,6 +527,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34910d7e94406c84e9e552177b210294, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2208451966411985751}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34910d7e94406c84e9e552177b210294, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6175579742076307091}
   m_SourcePrefab: {fileID: 100100000, guid: 34910d7e94406c84e9e552177b210294, type: 3}
 --- !u!1 &7448378572760983716 stripped
 GameObject:
@@ -577,6 +584,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  attackDamage: 10
+  attackInterval: 1
+  attackRange: 2
+  playerTag: Player
+  itemToDrop: {fileID: 1755626104218607986, guid: 5db0d58e155abfd47a91c49831e435c7, type: 3}
+  chanceToDrop: 52
 --- !u!195 &5143945421991643034
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -622,3 +635,26 @@ CapsuleCollider:
   m_Height: 0.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.34, z: 0}
+--- !u!136 &6175579742076307091
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448378572760983716}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

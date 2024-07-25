@@ -50,5 +50,6 @@ public class Pause : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        Timer.stopTime = true;
     }
 }

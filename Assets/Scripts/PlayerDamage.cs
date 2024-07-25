@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 
 public class PlayerDamage : MonoBehaviour
 {
@@ -12,16 +14,35 @@ public class PlayerDamage : MonoBehaviour
     public int attackDamage = 10; // Dano do ataque
     public string enemyTag = "Enemy"; // Tag dos inimigos
     public Animator animator; // Referência ao Animator
-
+    public Slider healthSlider; // Referência ao Slider de vida
     private float nextAttackTime = 0f;
+    private float health = 100f; // Vida inicial do player
 
-    void Update()
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        healthSlider.value = health;
+        healthSlider.maxValue = health;
+    }
+
+    private void Update()
     {
         if (Time.time >= nextAttackTime)
         {
             Attack();
             nextAttackTime = Time.time + attackInterval;
         }
+
+        if (health <= 0f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        healthSlider.value = health;
     }
 
     void Attack()
@@ -32,13 +53,8 @@ public class PlayerDamage : MonoBehaviour
             animator.SetTrigger("Attack");
         }
 
-        // Encontrar a posição do mouse no mundo do jogo
-        Vector3 mousePosition = GetMouseWorldPosition();
-        Vector3 direction = (mousePosition - transform.position).normalized;
-        Vector3 attackPosition = transform.position + direction * attackRange;
-
         // Encontrar inimigos dentro do alcance
-        Collider[] hitColliders = Physics.OverlapSphere(attackPosition, attackRange);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
 
         foreach (Collider collider in hitColliders)
         {
@@ -55,20 +71,11 @@ public class PlayerDamage : MonoBehaviour
         }
     }
 
-    Vector3 GetMouseWorldPosition()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo))
-        {
-            return hitInfo.point;
-        }
-        return Vector3.zero;
-    }
-
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         // Desenhar uma esfera no editor para visualizar o alcance do ataque
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
+
