@@ -8,6 +8,7 @@ public class Dash : MonoBehaviour
     public float dashDistance = 10f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 2f;
+    public float dashDamage = 2f;
 
     private PlayerInputActions playerInputActions;
     private CharacterController characterController;
@@ -17,6 +18,7 @@ public class Dash : MonoBehaviour
     private float dashStartTime;
     public GameObject particle;
     public GameObject slash;
+    public PlayerStats playerStats;
 
     // Adicione uma referência ao Animator
     private Animator animator;
@@ -29,6 +31,11 @@ public class Dash : MonoBehaviour
         animator = GetComponent<Animator>();  // Obtenha o componente Animator
 
         playerInputActions.Player.Dash.performed += ctx => StartDash();
+    }
+    private void Start()
+    {
+        dashCooldown = playerStats.DashRecarga;
+        dashDamage = playerStats.dashDamage;
     }
 
     private void OnEnable()

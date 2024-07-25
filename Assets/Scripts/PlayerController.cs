@@ -4,15 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public LightController lightController; // Referência ao LightController
+    public PlayerStats playerStats;
 
     private PlayerInputActions playerInputActions;
-    private Vector2 mouseScreenPosition;
-    public float DanoRecebido;
 
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
-        //playerInputActions.Player.Look.performed += OnLookPerformed;
     }
 
     private void OnEnable()
@@ -24,11 +22,23 @@ public class PlayerController : MonoBehaviour
     {
         playerInputActions.Disable();
     }
+
+    private void Start()
+    {
+        if (lightController != null && playerStats != null)
+        {
+            // Define maxSpotAngle no LightController com base na vida máxima do jogador
+            lightController.maxSpotAngle = playerStats.Vida;
+            lightController.playerLight.spotAngle = lightController.maxSpotAngle;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            DecreaseFieldOfView(DanoRecebido);
+            Debug.Log("Tomou Dano");
+            DecreaseFieldOfView(playerStats.Defesa - collision.gameObject.GetComponent<Enemy>().Dano);
         }
     }
 
@@ -44,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (lightController != null)
         {
-            lightController.IncreaseFieldOfView(amount); // Valor para aumentar
+            lightController.IncreaseFieldOfView(amount);
         }
     }
 }

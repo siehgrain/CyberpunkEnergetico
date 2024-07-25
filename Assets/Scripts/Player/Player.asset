@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd8626e4a5cdc14093b25187539f9cc, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  Vida: 100
+  Dano: 10
+  Velocidade: 6
+  Projeteis: 1
+  ColetaSize: 1
+  FlashBangSize: 0
+  CorteEspiral: 0
+  Defesa: 0
+  Recarga: -1
+  DashRecarga: 3
+  dashDamage: 20

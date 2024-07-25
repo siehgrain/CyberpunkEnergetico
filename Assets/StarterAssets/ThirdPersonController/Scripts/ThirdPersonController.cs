@@ -16,7 +16,11 @@ namespace StarterAssets
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
-        public float MoveSpeed = 2.0f;
+        private float MoveSpeed = 2.0f;
+
+        [Header("PlayerStats")]
+        [Tooltip("PlayerStats")]
+        public PlayerStats playerStats;
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
@@ -134,6 +138,7 @@ namespace StarterAssets
 
         private void Start()
         {
+            MoveSpeed = playerStats.Velocidade;
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _hasAnimator = TryGetComponent(out _animator);

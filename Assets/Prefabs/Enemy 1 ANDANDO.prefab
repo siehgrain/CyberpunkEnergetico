@@ -300,6 +300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 1 ANDANDO
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34910d7e94406c84e9e552177b210294, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1360657110594216822, guid: 34910d7e94406c84e9e552177b210294, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -619,6 +623,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.25
-  m_Height: 0.6
+  m_Height: 1.38
   m_Direction: 1
-  m_Center: {x: 0, y: 0.34, z: 0}
+  m_Center: {x: 0, y: 0.59, z: 0}
