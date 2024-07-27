@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     private float speed;
     private float lifetime = 3f; // Tempo de vida do projétil em segundos
     private float lifetimeCounter;
+    public GameObject explosion;
 
     void OnEnable()
     {
@@ -45,6 +46,7 @@ public class Projectile : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
+            Instantiate(explosion,transform.position,Quaternion.identity);
             Destroy(gameObject);
         }
     }

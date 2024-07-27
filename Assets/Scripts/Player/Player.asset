@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Vida: 100
   Dano: 10
-  Velocidade: 6
+  Velocidade: 4
   Projeteis: 1
-  ColetaSize: 1
+  ColetaSize: 0
   FlashBangSize: 0
   CorteEspiral: 0
   Defesa: 0
-  Recarga: -1
-  DashRecarga: 3
-  dashDamage: 20
+  Recarga: 5
+  DashRecarga: 5
+  DashDamage: 10

@@ -91,6 +91,17 @@
                 },
                 {
                     "name": "",
+                    "id": "abbf92f4-b36d-47b4-9efd-8f9a6c9f0c0c",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fc8cea4e-f42c-4c59-89b4-11b99163929d",
                     "path": "<DualShockGamepad>/buttonWest",
                     "interactions": "",

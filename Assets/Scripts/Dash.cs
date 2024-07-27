@@ -18,6 +18,7 @@ public class Dash : MonoBehaviour
     private float dashStartTime;
     public GameObject particle;
     public GameObject slash;
+    public GameObject slashCollider;
     public PlayerStats playerStats;
 
     // Adicione uma referência ao Animator
@@ -34,8 +35,7 @@ public class Dash : MonoBehaviour
     }
     private void Start()
     {
-        dashCooldown = playerStats.DashRecarga;
-        dashDamage = playerStats.dashDamage;
+       
     }
 
     private void OnEnable()
@@ -50,6 +50,8 @@ public class Dash : MonoBehaviour
 
     private void Update()
     {
+        dashCooldown = playerStats.DashRecarga;
+        dashDamage = playerStats.DashDamage;
         if (isDashing)
         {
             float elapsed = Time.time - dashStartTime;
@@ -71,7 +73,9 @@ public class Dash : MonoBehaviour
     {
         if (canDash)
         {
+
             particle.SetActive(true);
+            slashCollider.SetActive(true);
             dashDirection = transform.forward;
             dashStartTime = Time.time;
             isDashing = true;
@@ -89,5 +93,6 @@ public class Dash : MonoBehaviour
     {
         canDash = true;
         slash.SetActive(false);
+        slashCollider.SetActive(false);
     }
 }

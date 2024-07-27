@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; // Importar TextMeshPro
-using UnityEngine.UI; // Importar UI
-using UnityEngine.EventSystems; // Importar EventSystems para interfaces de ponteiro
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Reflection;
 
 public class UpgradeManager : MonoBehaviour
@@ -10,22 +10,19 @@ public class UpgradeManager : MonoBehaviour
     public List<UpgradeDataSO> upgradeDataList;
     public List<UpgradeDataSO> selectedUpgrades;
     public PlayerStats playerStats;
-
-    // Referências da UI para os cards de upgrade
-    public List<TextMeshProUGUI> levelTexts; // TextMeshPro para o nível
-    public List<TextMeshProUGUI> descriptionTexts; // TextMeshPro para a descrição
-    public List<Image> upgradeImages; // Imagem da UI para o sprite
-    public List<TextMeshProUGUI> NomeText; // TextMeshPro para o nível
-    public List<Selectable> cards; // Selectables para os upgrades
-    public GameObject UpgradePanel; // Selectables para os upgrades
+    public List<TextMeshProUGUI> levelTexts;
+    public List<TextMeshProUGUI> descriptionTexts;
+    public List<Image> upgradeImages;
+    public List<TextMeshProUGUI> NomeText;
+    public List<Selectable> cards;
+    public GameObject UpgradePanel;
 
     private Dictionary<string, int> upgradeProgress = new Dictionary<string, int>();
 
     void Start()
     {
-        SelectRandomUpgrades();
-        Time.timeScale = 0;
         //SaveDefaultValues();
+        FindObjectOfType<Jukebox>().Play("Musica Calma");
     }
 
     void SelectRandomUpgrades()
@@ -43,12 +40,13 @@ public class UpgradeManager : MonoBehaviour
             }
         }
 
-        // Display selected upgrades to the player
         DisplayUpgradesToPlayer(selectedUpgrades);
     }
 
     void DisplayUpgradesToPlayer(List<UpgradeDataSO> upgrades)
     {
+        FindObjectOfType<Jukebox>().SetMusicVolume("Musica Calma", 1);
+        FindObjectOfType<Jukebox>().SetMusicVolume("Musica Ação", 0);
         for (int i = 0; i < upgrades.Count; i++)
         {
             if (i < levelTexts.Count && i < descriptionTexts.Count && i < upgradeImages.Count && i < cards.Count)
@@ -66,14 +64,14 @@ public class UpgradeManager : MonoBehaviour
                 upgradeImages[i].sprite = upgrades[i].Imagem;
 
                 string methodName = upgrades[i].Metodo;
-                int index = i; 
+                int index = i;
                 int nivel = upgrades[i].Nivel;
                 EventTrigger trigger = cards[i].GetComponent<EventTrigger>();
                 if (trigger == null)
                 {
                     trigger = cards[i].gameObject.AddComponent<EventTrigger>();
                 }
-                trigger.triggers.Clear(); // Remove any existing triggers
+                trigger.triggers.Clear();
 
                 EventTrigger.Entry entry = new EventTrigger.Entry();
                 entry.eventID = EventTriggerType.PointerClick;
@@ -85,7 +83,6 @@ public class UpgradeManager : MonoBehaviour
 
     void CallUpgradeMethod(string methodName, int nivel)
     {
-        // Use reflection to call the method by name
         MethodInfo method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance);
         if (method != null)
         {
@@ -98,6 +95,16 @@ public class UpgradeManager : MonoBehaviour
             Debug.LogWarning("Método não encontrado: " + methodName);
             Time.timeScale = 1;
         }
+    }
+    private void OnEnable()
+    {
+        SelectRandomUpgrades();
+        Time.timeScale = 0;
+    }
+    private void OnDisable()
+    {
+        FindObjectOfType<Jukebox>().SetMusicVolume("Musica Calma",0);
+        FindObjectOfType<Jukebox>().SetMusicVolume("Musica Ação", 1);
     }
 
     //void SaveDefaultValues()
@@ -171,18 +178,13 @@ public class UpgradeManager : MonoBehaviour
         playerStats.ApplyUpgrade("Vida", Nivel);
         upgradeDataList[9].Nivel++;
     }
-    //void OnApplicationQuit()
-    //{
-    //    RestoreDefaultValues();
-    //}
-    //void RestoreDefaultValues()
-    //{
-    //    foreach (var upgrade in upgradeDataList)
-    //    {
-    //        if (PlayerPrefs.HasKey(upgrade.Nome))
-    //        {
-    //            upgrade.Nivel = PlayerPrefs.GetInt(upgrade.Nome);
-    //        }
-    //    }
-    //}
+
+    public void ResetUpgrades()
+    {
+        for (int i = 0; i < upgradeDataList.Count; i++)
+        {
+            upgradeDataList[i].Nivel = 1;
+            Debug.Log("Reset lvl 1");
+        }
+    }
 }

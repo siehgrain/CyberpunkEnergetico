@@ -13,7 +13,39 @@ public class PlayerStats : ScriptableObject
     public int Defesa;
     public float Recarga;
     public float DashRecarga;
-    public int dashDamage;
+    public int DashDamage;
+
+    private int initialVida;
+    private int initialDano;
+    private float initialVelocidade;
+    private int initialProjeteis;
+    private float initialColetaSize;
+    private float initialFlashBangSize;
+    private float initialCorteEspiral;
+    private int initialDefesa;
+    private float initialRecarga;
+    private float initialDashRecarga;
+    private int initialDashDamage;
+
+    private void OnEnable()
+    {
+        SaveInitialValues();
+    }
+
+    private void SaveInitialValues()
+    {
+        initialVida = Vida;
+        initialDano = Dano;
+        initialVelocidade = Velocidade;
+        initialProjeteis = Projeteis;
+        initialColetaSize = ColetaSize;
+        initialFlashBangSize = FlashBangSize;
+        initialCorteEspiral = CorteEspiral;
+        initialDefesa = Defesa;
+        initialRecarga = Recarga;
+        initialDashRecarga = DashRecarga;
+        initialDashDamage = DashDamage;
+    }
 
     public void ApplyUpgrade(string upgradeType, int nivel)
     {
@@ -63,5 +95,20 @@ public class PlayerStats : ScriptableObject
                 Debug.LogWarning("Tipo de upgrade não encontrado: " + upgradeType);
                 break;
         }
+    }
+
+    public void ResetValues()
+    {
+        Vida = initialVida;
+        Dano = initialDano;
+        Velocidade = initialVelocidade;
+        Projeteis = initialProjeteis;
+        ColetaSize = initialColetaSize;
+        FlashBangSize = initialFlashBangSize;
+        CorteEspiral = initialCorteEspiral;
+        Defesa = initialDefesa;
+        Recarga = initialRecarga;
+        DashRecarga = initialDashRecarga;
+        DashDamage = initialDashDamage;
     }
 }

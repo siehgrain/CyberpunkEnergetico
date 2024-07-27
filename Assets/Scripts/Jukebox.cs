@@ -72,9 +72,17 @@ public class Jukebox : MonoBehaviour
         SetVolume("SfxVolume");
         SetVolume("MusicVolume");
     }
-    public void StopMusic()
+    public void SetMusicVolume(string name, float volume)
     {
-        musicSource.Stop();
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.Log(name + " sound not found");
+            return;
+        }
+        volume = Mathf.Clamp(volume, 0f, 1.0f); // Garante que o volume esteja entre 0.0001 e 1.0
+        s.source.volume = volume;
+        PlayerPrefs.SetFloat(name + "Volume", volume); // Salva o volume específico da música
     }
     public void StopMusicByName(string name)
     {

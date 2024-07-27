@@ -868,8 +868,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1d25041e0df31374a83bf1895063af00, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1075,13 +1075,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - clip: {fileID: 8300000, guid: 5e9c3326512c54041aa9fab72d5daaeb, type: 3}
+  - clip: {fileID: 8300000, guid: fd0ac78d6a41245418ccbaa120c07e9b, type: 3}
     name: Musica Menu
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1
-    playOnAwake: 0
+    playOnAwake: 1
     audioMixer: {fileID: 24100000, guid: f63e08661a77b994b9ad6a5bd31fc8f8, type: 2}
     AudioMixerGroup: {fileID: 2483765158904348272, guid: f63e08661a77b994b9ad6a5bd31fc8f8, type: 2}
   mixer: {fileID: 24100000, guid: f63e08661a77b994b9ad6a5bd31fc8f8, type: 2}
@@ -1226,8 +1226,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1d25041e0df31374a83bf1895063af00, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2792,8 +2792,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1d25041e0df31374a83bf1895063af00, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4394,8 +4394,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1d25041e0df31374a83bf1895063af00, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5134,6 +5134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfd88fcc8809364aaea837a24f22a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeManager: {fileID: 0}
 --- !u!1 &1388959526
 GameObject:
   m_ObjectHideFlags: 0

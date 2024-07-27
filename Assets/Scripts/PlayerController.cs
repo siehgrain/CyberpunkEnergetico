@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
     {
         playerInputActions.Disable();
     }
-
+    private void OnApplicationQuit()
+    {
+        playerStats.ResetValues();
+    }
     private void Start()
     {
         if (lightController != null && playerStats != null)
@@ -38,7 +41,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Tomou Dano");
-            DecreaseFieldOfView(playerStats.Defesa - collision.gameObject.GetComponent<Enemy>().Dano);
+            DecreaseFieldOfView( collision.gameObject.GetComponent<Enemy>().Dano - playerStats.Defesa);
         }
     }
 

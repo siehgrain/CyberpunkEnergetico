@@ -9,6 +9,7 @@ public class Pause : MonoBehaviour
     public GameObject pauseMenuUI;
     private bool isPaused = false;
     private DefaultInputActions controls;
+    public GameObject UpgradePanel;
 
     void Awake()
     {
@@ -28,13 +29,16 @@ public class Pause : MonoBehaviour
 
     void TogglePause()
     {
-        if (isPaused)
+        if (UpgradePanel.activeSelf == false)
         {
-            Resume();
-        }
-        else
-        {
-            PauseGame();
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
     }
 
