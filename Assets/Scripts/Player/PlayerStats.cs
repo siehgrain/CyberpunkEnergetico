@@ -3,8 +3,8 @@
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "ScriptableObjects/PlayerStats", order = 1)]
 public class PlayerStats : ScriptableObject
 {
-    public int Vida;
-    public int Dano;
+    public float Vida;
+    public float Dano;
     public float Velocidade;
     public int Projeteis;
     public float ColetaSize;
@@ -15,8 +15,8 @@ public class PlayerStats : ScriptableObject
     public float DashRecarga;
     public int DashDamage;
 
-    private int initialVida;
-    private int initialDano;
+    private float initialVida;
+    private float initialDano;
     private float initialVelocidade;
     private int initialProjeteis;
     private float initialColetaSize;

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class RoboAttack : MonoBehaviour
 {
     public float attackRate = 1f;
-    public int damage = 10;
+    public float damage = 10;
     public int projectileCount = 1;
     public float projectileSpeed = 10f;
     public GameObject projectilePrefab;
@@ -54,7 +54,7 @@ public class RoboAttack : MonoBehaviour
             Projectile projScript = projectile.GetComponent<Projectile>();
             if (projScript != null)
             {
-                projScript.SetDirection(direction, damage, projectileSpeed);
+                projScript.SetDirection(direction, (int)damage, projectileSpeed);
             }
         }
     }
