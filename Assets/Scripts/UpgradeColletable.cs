@@ -10,6 +10,7 @@ public class UpgradeCollectable : MonoBehaviour
         // Verifica se a colisão foi com um objeto com a tag "Upgrade"
         if (other.gameObject.tag == "Player")
         {
+            FindObjectOfType<Jukebox>().PlayOneShoot("Upgrade");
             FindObjectOfType<GameManager>().upgradePanel.SetActive(true);
             gameObject.SetActive(false);
         }

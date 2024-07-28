@@ -9,9 +9,12 @@ public class LightController : MonoBehaviour
     private float previousSpotAngle;
     public GameObject player; // Referência ao jogador
     public GameObject deathEffect; // Efeito visual de morte
+    public GameObject menuDeMorte; // Efeito visual de morte
+    public bool IsAlive;
 
     void Start()
     {
+        IsAlive = true;
         if (playerLight == null)
         {
             playerLight = GetComponent<Light>();
@@ -62,34 +65,31 @@ public class LightController : MonoBehaviour
 
     public void DecreaseFieldOfView(float amount)
     {
+        if (playerLight.spotAngle == 1)
+        {
+            Die();
+        }
         if (playerLight.spotAngle > minSpotAngle)
         {
             float newSpotAngle = playerLight.spotAngle - amount;
             playerLight.spotAngle = Mathf.Max(newSpotAngle, minSpotAngle);
 
-            if (Mathf.Abs(newSpotAngle - playerLight.spotAngle) > 0.01f) // Atualiza apenas se a diferença for significativa
+            if (Mathf.Abs(newSpotAngle - playerLight.spotAngle) > 0.01f)
             {
                 playerLight.spotAngle = newSpotAngle;
                 previousSpotAngle = playerLight.spotAngle;
-            }
-
-            // Verifica se o ângulo do spot chegou ao mínimo, indicando morte
-            if (playerLight.spotAngle <= minSpotAngle)
-            {
-                Die();
             }
         }
     }
 
     private void Die()
     {
-        // Aqui você pode adicionar lógica de morte do jogador, como exibir um efeito e desativar o jogador
-        if (deathEffect != null)
-        {
-            Instantiate(deathEffect, player.transform.position, Quaternion.identity);
-        }
-        // Desativa o jogador
-        player.SetActive(false);
-        // Adicione aqui qualquer outra lógica necessária para a morte do jogador
+        IsAlive = false;
+        GetComponent<Animator>().SetBool("IsAlive", false);
+        Time.timeScale = 0f;
+        PlayerInputActions input = new PlayerInputActions();
+        input.Player.Disable();
+        menuDeMorte.SetActive(true);
+        FindObjectOfType<Jukebox>().PlayOneShoot("Death");
     }
 }

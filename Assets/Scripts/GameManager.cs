@@ -19,10 +19,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        FindObjectOfType<Jukebox>().Play("Musica Ação");
-    }
 
     private void OnApplicationQuit()
     {

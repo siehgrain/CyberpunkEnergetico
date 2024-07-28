@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
+        FindObjectOfType<Jukebox>().Play("Musica Ação");
     }
 
     private void OnEnable()
@@ -38,10 +39,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("EnemyP"))
         {
             Debug.Log("Tomou Dano");
             DecreaseFieldOfView( collision.gameObject.GetComponent<Enemy>().Dano - playerStats.Defesa);
+        }
+        if (collision.gameObject.CompareTag("EnemyM"))
+        {
+            Debug.Log("Tomou Dano");
+            DecreaseFieldOfView(collision.gameObject.GetComponent<Enemy>().Dano - playerStats.Defesa);
         }
     }
 
@@ -50,6 +56,7 @@ public class PlayerController : MonoBehaviour
         if (lightController != null)
         {
             lightController.DecreaseFieldOfView(amount);
+            FindObjectOfType<Jukebox>().PlayOneShoot("Damage");
         }
     }
 

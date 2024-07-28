@@ -38,15 +38,28 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Verifica se o projétil colidiu com um inimigo
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("EnemyP"))
         {
             // Obtém o componente do inimigo e aplica o dano
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+                FindObjectOfType<Jukebox>().PlayOneShoot("Robo hitP");
             }
             Instantiate(explosion,transform.position,Quaternion.identity);
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("EnemyM"))
+        {
+            // Obtém o componente do inimigo e aplica o dano
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                FindObjectOfType<Jukebox>().PlayOneShoot("Robo hitM");
+            }
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

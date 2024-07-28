@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour
     public float attackRange = 2f;
     public float attackInterval = 1f;
     private float nextAttackTime = 0f;
-
+    public AudioClip[] FootstepAudioClips;
     WaveEnemy Spawner;
 
     private void Update()
@@ -36,8 +37,20 @@ public class Enemy : MonoBehaviour
                 PlayerDamage player = collider.GetComponent<PlayerDamage>();
                 if (player != null)
                 {
-                    player.TakeDamage(Dano);
+                    //player.TakeDamage(Dano);
                 }
+            }
+        }
+    }
+    private void OnFootstep(AnimationEvent animationEvent)
+    {
+        if (animationEvent.animatorClipInfo.weight > 0.5f)
+        {
+            if (FootstepAudioClips.Length > 0)
+            {
+                Debug.Log("Andou");
+                var index = Random.Range(0, FootstepAudioClips.Length);
+                AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(transform.position), 1);
             }
         }
     }
@@ -50,10 +63,6 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    public void SetSpawner(WaveEnemy _spawner)
-    {
-        Spawner = _spawner;
-    }
 
     void Die()
     {
@@ -62,8 +71,6 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(itemToDrop, transform.position, Quaternion.identity);
         }
-        if (Spawner != null) Spawner.currentMonster.Remove(this.gameObject);
-        Spawner.currentMonster.Remove(this.gameObject);
         Destroy(gameObject);
     }
 }

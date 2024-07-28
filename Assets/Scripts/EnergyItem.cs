@@ -9,6 +9,7 @@ public class EnergyItem : MonoBehaviour
         // Verifica se o jogador colidiu com o item de energia
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<Jukebox>().PlayOneShoot("Energy");
             LightController lightController = other.GetComponent<LightController>();
             if (lightController != null)
             {

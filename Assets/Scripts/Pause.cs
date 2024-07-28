@@ -29,7 +29,7 @@ public class Pause : MonoBehaviour
 
     void TogglePause()
     {
-        if (UpgradePanel.activeSelf == false)
+        if (UpgradePanel.activeSelf == false && FindObjectOfType<LightController>().IsAlive)
         {
             if (isPaused)
             {

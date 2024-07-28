@@ -60,7 +60,7 @@ public class PlayerStats : ScriptableObject
                 Debug.Log("Dash: " + DashRecarga);
                 break;
             case "Recarga":
-                Recarga -= nivel;
+                Recarga += nivel;
                 Debug.Log("Recarga: " + Recarga);
                 break;
             case "Defesa":

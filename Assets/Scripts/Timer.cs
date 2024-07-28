@@ -16,7 +16,9 @@ public class Timer : MonoBehaviour
         if (!stopTime)
         {
             timeLevel += Time.deltaTime;
-            txt.text = timeLevel.ToString("0");
+            int minutes = Mathf.FloorToInt(timeLevel / 60F);
+            int seconds = Mathf.FloorToInt(timeLevel % 60F);
+            txt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
 }

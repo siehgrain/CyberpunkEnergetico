@@ -20,6 +20,6 @@ MonoBehaviour:
   FlashBangSize: 0
   CorteEspiral: 0
   Defesa: 0
-  Recarga: 5
+  Recarga: 4
   DashRecarga: 5
   DashDamage: 10

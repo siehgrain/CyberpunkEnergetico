@@ -23,6 +23,6 @@ public class EnemySpawner : MonoBehaviour
     {
         int spawnIndex = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[spawnIndex];
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemyPrefab, spawnPoint.localPosition, spawnPoint.rotation);
     }
 }

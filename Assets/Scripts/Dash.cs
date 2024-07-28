@@ -80,6 +80,7 @@ public class Dash : MonoBehaviour
             dashStartTime = Time.time;
             isDashing = true;
             canDash = false;
+            FindObjectOfType<Jukebox>().PlayOneShoot("Dash");
 
             // Acione o trigger de animação
             if (animator != null)

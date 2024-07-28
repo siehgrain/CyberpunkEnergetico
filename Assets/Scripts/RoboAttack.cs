@@ -16,9 +16,6 @@ public class RoboAttack : MonoBehaviour
     void Start()
     {
         StartCoroutine(AttackRoutine());
-        damage = playerStats.Dano;
-        projectileCount = playerStats.Projeteis;
-        attackRate = playerStats.Recarga;
     }
 
     IEnumerator AttackRoutine()
@@ -28,7 +25,7 @@ public class RoboAttack : MonoBehaviour
             if (attackCooldown <= 0f)
             {
                 Attack();
-                attackCooldown = 1f / attackRate;
+                attackCooldown = 1f / playerStats.Recarga;
             }
             else
             {
@@ -48,13 +45,14 @@ public class RoboAttack : MonoBehaviour
         Vector3 direction = (worldMousePosition - transform.position).normalized;
         direction.y = 0;
 
-        for (int i = 0; i < projectileCount; i++)
+        for (int i = 0; i < playerStats.Projeteis; i++)
         {
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            FindObjectOfType<Jukebox>().PlayOneShoot("Drone Shot");
             Projectile projScript = projectile.GetComponent<Projectile>();
             if (projScript != null)
             {
-                projScript.SetDirection(direction, (int)damage, projectileSpeed);
+                projScript.SetDirection(direction, (int)playerStats.Dano, projectileSpeed);
             }
         }
     }

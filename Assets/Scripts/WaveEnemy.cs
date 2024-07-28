@@ -45,7 +45,7 @@ public class WaveEnemy : MonoBehaviour
             currentMonster.Clear();
 
             Enemy monster = newspawn.GetComponent<Enemy>();
-            monster.SetSpawner(this);
+            //monster.SetSpawner(this);
         }
     }
     Vector3 FindSpawnLoc()
