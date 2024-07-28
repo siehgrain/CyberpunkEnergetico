@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
         if (!stopTime)
         {
             timeLevel += Time.deltaTime;
-            txt.text = timeLevel.ToString("TEMPO: 0");
+            txt.text = timeLevel.ToString("0");
         }
     }
 }
